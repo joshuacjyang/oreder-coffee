@@ -177,6 +177,11 @@
     .proposal-note svg { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 2px; color: var(--coffee); }
     .price-sources { display: block; margin-top: 8px; }
     .price-sources a { color: var(--coffee); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    .image-sources { flex-basis: 100%; margin-left: 27px; }
+    .image-sources summary { color: var(--coffee); cursor: pointer; }
+    .image-sources ol { max-height: 260px; overflow: auto; margin: 8px 0 0; padding-left: 20px; columns: 2; }
+    .image-sources li { break-inside: avoid; margin-bottom: 5px; }
+    .image-sources a { color: var(--coffee); text-underline-offset: 2px; }
     .category-bar {
       position: sticky;
       z-index: 8;
@@ -239,6 +244,7 @@
     }
     .product-card:hover { transform: translateY(-2px); border-color: rgba(105,71,53,.35); box-shadow: 0 8px 24px rgba(52,40,32,.06); }
     .product-image { display: block; width: 100%; aspect-ratio: 1.72; flex: 0 0 auto; object-fit: cover; background: var(--sage); }
+    .product-image-placeholder { display: grid; width: 100%; aspect-ratio: 1.72; flex: 0 0 auto; place-items: center; padding: 16px; background: var(--sage); color: var(--muted); font-size: .78rem; text-align: center; }
     .product-card-body { display: flex; width: 100%; flex: 1; flex-direction: column; align-items: flex-start; padding: 17px 18px 15px; }
     .product-card h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.16rem; font-weight: 400; line-height: 1.4; }
     .product-card p { margin: 0; color: var(--muted); font-size: .76rem; line-height: 1.7; }
@@ -295,6 +301,10 @@
     @media (max-width: 640px) {
       .container { width: min(100% - 36px,var(--content)); }
       .notice-bar { font-size: .67rem; letter-spacing: .03em; }
+      .proposal-note { display: flex; width: 100%; }
+      .proposal-note > span { min-width: 0; }
+      .image-sources { flex-basis: calc(100% - 37px); }
+      .image-sources ol { columns: 1; }
       .notice-bar span + span::before { padding-inline: 7px; }
       .brand-name strong { font-size: 1rem; }
       .hero { padding: 68px 0 52px; }
@@ -352,7 +362,11 @@
       <p>從每日咖啡到手作甜點，找一份今天想享受的風味。</p>
       <div class="proposal-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-        <span><strong>建議售價，尚待店家確認：</strong>依台灣公開咖啡店菜單及零售價格，按品項成本與咖啡館定位估算，並非 La cowbe du ste coffee 正式售價。圖片均為 Unsplash 氛圍示意，非實際商品照。<span class="price-sources">參考來源：<a href="https://www.louisacoffee.co/products_list/10" target="_blank" rel="noreferrer">路易莎精品咖啡菜單</a>（拿鐵 NT$90–110、Flat White NT$75、手沖 NT$95–115）、<a href="https://www.camacafe.com/Menu/1" target="_blank" rel="noreferrer">cama 飲品菜單</a>（手沖 NT$95–240）與<a href="https://www.camacafe.com/Menu/3" target="_blank" rel="noreferrer">餐食菜單</a>（三明治 NT$85–95、蛋糕 NT$45–100）、<a href="https://www.grgr.tw/products/coffeetaiwan" target="_blank" rel="noreferrer">台灣咖啡豆半磅參考</a>（NT$600）。市場與品項規格不同，建議售價仍應依實際成本調整。</span></span>
+        <span><strong>建議售價，尚待店家確認：</strong>依台灣公開咖啡店菜單及零售價格，按品項成本與咖啡館定位估算，並非 La cowbe du ste coffee 正式售價。圖片為依品項挑選的網路授權示意照片，非實際商品照。<span class="price-sources">參考來源：<a href="https://www.louisacoffee.co/products_list/10" target="_blank" rel="noreferrer">路易莎精品咖啡菜單</a>（拿鐵 NT$90–110、Flat White NT$75、手沖 NT$95–115）、<a href="https://www.camacafe.com/Menu/1" target="_blank" rel="noreferrer">cama 飲品菜單</a>（手沖 NT$95–240）與<a href="https://www.camacafe.com/Menu/3" target="_blank" rel="noreferrer">餐食菜單</a>（三明治 NT$85–95、蛋糕 NT$45–100）、<a href="https://www.grgr.tw/products/coffeetaiwan" target="_blank" rel="noreferrer">台灣咖啡豆半磅參考</a>（NT$600）。市場與品項規格不同，建議售價仍應依實際成本調整。</span></span>
+        <details class="image-sources">
+          <summary>查看 48 張照片的來源與授權</summary>
+          <ol id="image-credits"></ol>
+        </details>
       </div>
     </div>
   </section>
@@ -488,71 +502,84 @@
   </footer>
   <script>
     const productPresentation = [
-      { price: "NT$95", image: "photo-1495474472287-4d71bcdd2085" },
-      { price: "NT$125", image: "photo-1461023058943-07fcbe16d735" },
-      { price: "NT$125", image: "photo-1511920170033-f8396924c348" },
-      { price: "NT$145", image: "photo-1442512595331-e89e73853f31" },
-      { price: "NT$150", image: "photo-1509042239860-f550ce710b93" },
-      { price: "NT$140", image: "photo-1501339847302-ac426a4a7cbb" },
-      { price: "NT$150", image: "photo-1498804103079-a6351b050096" },
-      { price: "NT$150", image: "photo-1517701550927-30cf4ba1dba5" },
-      { price: "NT$150", image: "photo-1559056199-641a0ac8b55e" },
-      { price: "NT$180 起", image: "photo-1459755486867-b55449bb39ff" },
-      { price: "NT$150", image: "photo-1541167760496-1628856ab772" },
-      { price: "NT$160", image: "photo-1511920170033-f8396924c348" },
-      { price: "NT$165", image: "photo-1442512595331-e89e73853f31" },
-      { price: "NT$160", image: "photo-1495474472287-4d71bcdd2085" },
-      { price: "NT$220", image: "photo-1559056199-641a0ac8b55e" },
-      { price: "NT$180", image: "photo-1461023058943-07fcbe16d735" },
-      { price: "NT$150", image: "photo-1544787219-7f47ccb76574" },
-      { price: "NT$150", image: "photo-1556679343-c7306c1976bc" },
-      { price: "NT$150", image: "photo-1513558161293-cdaf765edfd4" },
-      { price: "NT$170", image: "photo-1495474472287-4d71bcdd2085" },
-      { price: "NT$150", image: "photo-1497534446932-c925b458314e" },
-      { price: "NT$150", image: "photo-1544145945-f90425340c7e" },
-      { price: "NT$180", image: "photo-1546173159-315724a31696" },
-      { price: "NT$130", image: "photo-1513558161293-cdaf765edfd4" },
-      { price: "NT$180", image: "photo-1488477181946-6428a0291777" },
-      { price: "NT$170", image: "photo-1578985545062-69928b1d9587" },
-      { price: "NT$100", image: "photo-1606313564200-e75d5e30476c" },
-      { price: "NT$150", image: "photo-1563729784474-d77dbb933a9e" },
-      { price: "NT$100", image: "photo-1509440159596-0249088772ff" },
-      { price: "NT$85", image: "photo-1551024506-0bccd828d307" },
-      { price: "NT$180", image: "photo-1586985289688-ca3cf47d3e6e" },
-      { price: "NT$150", image: "photo-1565958011703-44f9829ba187" },
-      { price: "NT$90", image: "photo-1606890737304-57a1ca8a5b62" },
-      { price: "NT$190–240", image: "photo-1553909489-cd47e0ef937f" },
-      { price: "NT$170–210", image: "photo-1528735602780-2552fd46c7af" },
-      { price: "NT$160–220", image: "photo-1484723091739-30a097e8f929" },
-      { price: "NT$300", image: "photo-1547592180-85f173990554" },
-      { price: "NT$160", image: "photo-1546069901-ba9599a7e63c" },
-      { price: "NT$130", image: "photo-1540189549336-e6e99c3679fe" },
-      { price: "NT$220", image: "photo-1555939594-58d7cb561ad1" },
-      { price: "NT$260–320", image: "photo-1559847844-5315695dadae" },
-      { price: "半磅 NT$600 起", image: "photo-1447933601403-0c6688de566e" },
-      { price: "單包 NT$45｜禮盒 NT$450 起", image: "photo-1459755486867-b55449bb39ff" },
-      { price: "NT$280／5 入", image: "photo-1461023058943-07fcbe16d735" },
-      { price: "NT$450", image: "photo-1509042239860-f550ce710b93" },
-      { price: "NT$250 起", image: "photo-1498804103079-a6351b050096" },
-      { price: "NT$650 起", image: "photo-1488477181946-6428a0291777" },
-      { price: "NT$250／瓶", image: "photo-1511920170033-f8396924c348" },
+      { price: "NT$95", image: "https://live.staticflickr.com/3243/3022024974_f10177b7c2_b.jpg", title: "Americano Coffee", creator: "markhillary", source: "https://www.flickr.com/photos/56087830@N00/3022024974", license: "CC BY 2.0" },
+      { price: "NT$125", image: "https://live.staticflickr.com/956/42210096022_085063baee_b.jpg", title: "Cafe Latte Art", creator: "Ryan.Kartzke", source: "https://www.flickr.com/photos/155319444@N06/42210096022", license: "CC BY 2.0" },
+      { price: "NT$125", image: "https://live.staticflickr.com/65535/51214020257_7893bc7f04_b.jpg", title: "Formal Morning Cappuccino Coffee", creator: "Chic Bee", source: "https://www.flickr.com/photos/80454089@N00/51214020257", license: "CC BY 2.0" },
+      { price: "NT$145", image: "https://live.staticflickr.com/3919/14976180088_f1a5ac23e4_b.jpg", title: "Cafe mocha", creator: "cloud.shepherd", source: "https://www.flickr.com/photos/34907359@N08/14976180088", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=800", title: "Latte art in preparation", creator: "Pexels", source: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg", license: "Pexels License" },
+      { price: "NT$140", image: "https://live.staticflickr.com/2893/33704324481_838a6d2a23_b.jpg", title: "Flat White Coffee Bunny", creator: "jeffdjevdet", source: "https://www.flickr.com/photos/126917537@N03/33704324481", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/7520/15745719338_1b1dbf33ea.jpg", title: "Coffee lemonade", creator: "illustir", source: "https://www.flickr.com/photos/12505664@N00/15745719338", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://upload.wikimedia.org/wikipedia/commons/3/37/Espresso_tonic.jpg", title: "Espresso tonic", creator: "Lajmmoore", source: "https://commons.wikimedia.org/w/index.php?curid=141050206", license: "CC BY-SA 4.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/8225/8467566226_2a29b7b126_b.jpg", title: "Dirty", creator: "jonolist", source: "https://www.flickr.com/photos/46635911@N00/8467566226", license: "CC BY-SA 2.0" },
+      { price: "NT$180 起", image: "https://live.staticflickr.com/65535/52135390054_457c65be56_b.jpg", title: "Pour Over Coffee Brewing with a Chemex", creator: "markolaz", source: "https://www.flickr.com/photos/195403219@N08/52135390054", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/1279/688642298_17c6c8b1a8_b.jpg", title: "Cold-brewed iced coffee", creator: "thebittenword.com", source: "https://www.flickr.com/photos/22198928@N00/688642298", license: "CC BY 2.0" },
+      { price: "NT$160", image: "https://live.staticflickr.com/8491/8301075175_a6e1825859_b.jpg", title: "Latte art", creator: "Phil Denton", source: "https://www.flickr.com/photos/37475039@N04/8301075175", license: "CC BY-SA 2.0" },
+      { price: "NT$165", image: "https://live.staticflickr.com/3022/2752627617_dc710611c7_b.jpg", title: "Caffe Latte - The French Quarter", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/2752627617", license: "CC BY-SA 2.0" },
+      { price: "NT$160", image: "https://live.staticflickr.com/2701/4104868359_5e21c3d92f_b.jpg", title: "Caffe Latte, Flat White - Apte", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/4104868359", license: "CC BY-SA 2.0" },
+      { price: "NT$220", image: "https://live.staticflickr.com/5145/5616981007_b364a1e2db_b.jpg", title: "Ingredients 15/52 Irish Coffee", creator: "JanetR3", source: "https://www.flickr.com/photos/54060879@N02/5616981007", license: "CC BY 2.0" },
+      { price: "NT$180", image: "https://live.staticflickr.com/1207/608432363_869e06ed7b_b.jpg", title: "Coffee Affogato - Koko Black, Chadstone", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/608432363", license: "CC BY-SA 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/3231/3122544172_0acaccaa0f_b.jpg", title: "Matcha Latte and Green Tea Ice Cream", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/3122544172", license: "CC BY-SA 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/2834/33483462802_f5fbf8d654_b.jpg", title: "Hot chocolate and marshmallows", creator: "YellowGreenFarmersMarket", source: "https://www.flickr.com/photos/82179181@N04/33483462802", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/7560/28035122146_12b96c4e23_b.jpg", title: "Chai latte tea", creator: "Time To Go [Virtual.com]", source: "https://www.flickr.com/photos/56964630@N06/28035122146", license: "CC BY 2.0" },
+      { price: "NT$170", image: "https://live.staticflickr.com/90/231410069_accdc9ad42_b.jpg", title: "Tea cup", creator: "Bird Eye", source: "https://www.flickr.com/photos/30812536@N00/231410069", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Peach_soda_soft_drink.jpg", title: "Peach soda soft drink", creator: "Geoffreyrabbit", source: "https://commons.wikimedia.org/w/index.php?curid=83613943", license: "CC BY-SA 4.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/3376/3336643660_ffe0503af7_b.jpg", title: "Chamomile", creator: "this lyre lark", source: "https://www.flickr.com/photos/49115177@N00/3336643660", license: "CC BY 2.0" },
+      { price: "NT$180", image: "https://live.staticflickr.com/7148/13542417303_69476d7a59_b.jpg", title: "71/365 - Fruit Tea", creator: "Toffee Maky", source: "https://www.flickr.com/photos/86543134@N03/13542417303", license: "CC BY-SA 2.0" },
+      { price: "NT$130", image: "https://upload.wikimedia.org/wikipedia/commons/1/15/Iced_brown_sugar_milk_tea_-_Neeko_2025-04-08.jpg", title: "Iced brown sugar milk tea", creator: "Andy Li", source: "https://commons.wikimedia.org/w/index.php?curid=163325971", license: "CC0 1.0" },
+      { price: "NT$180", image: "https://live.staticflickr.com/220/501306828_0c8717474c_b.jpg", title: "Turkish coffee and tiramisu", creator: "blhphotography", source: "https://www.flickr.com/photos/55146360@N00/501306828", license: "CC BY 2.0" },
+      { price: "NT$170", image: "https://live.staticflickr.com/65535/52425625463_58d38a6f55_b.jpg", title: "Keto Burnt Basque Cheesecake", creator: "tedeytan", source: "https://www.flickr.com/photos/22526649@N03/52425625463", license: "CC BY-SA 2.0" },
+      { price: "NT$100", image: "https://live.staticflickr.com/4149/4996853387_5d312db469_b.jpg", title: "Coconut Flan", creator: "Vegan Feast Catering", source: "https://www.flickr.com/photos/25128194@N02/4996853387", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/7327/9695647001_f624a4fcf5.jpg", title: "Cinnamon roll", creator: "Helen.Yang", source: "https://www.flickr.com/photos/61310814@N05/9695647001", license: "CC BY 2.0" },
+      { price: "NT$100", image: "https://live.staticflickr.com/7052/6849605425_d78ce5c685_b.jpg", title: "Lemon Scone with Jam", creator: "Benson Kua", source: "https://www.flickr.com/photos/91545223@N00/6849605425", license: "CC BY-SA 2.0" },
+      { price: "NT$85", image: "https://live.staticflickr.com/3547/3343913005_3df075dbf3_b.jpg", title: "Healthy chocolate chip cookies", creator: "hlkljgk", source: "https://www.flickr.com/photos/52473526@N00/3343913005", license: "CC BY-SA 2.0" },
+      { price: "NT$180", image: "https://live.staticflickr.com/8179/7954960682_09b156fa9a_b.jpg", title: "Fruits Mille Crepe", creator: "t-mizo", source: "https://www.flickr.com/photos/47626742@N07/7954960682", license: "CC BY 2.0" },
+      { price: "NT$150", image: "https://live.staticflickr.com/3332/3619713381_c649361004_b.jpg", title: "Frozen Lemon Chiffon", creator: "ralph and jenny", source: "https://www.flickr.com/photos/92269745@N00/3619713381", license: "CC BY 2.0" },
+      { price: "NT$90", image: "https://live.staticflickr.com/2274/2168285328_ca9d6842c2_b.jpg", title: "Dark Chocolate Tart, French Canele", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/2168285328", license: "CC BY-SA 2.0" },
+      { price: "NT$190–240", image: "https://live.staticflickr.com/38/78755315_194bbb833e_b.jpg", title: "Club sandwich", creator: "adactio", source: "https://www.flickr.com/photos/74105777@N00/78755315", license: "CC BY 2.0" },
+      { price: "NT$170–210", image: "https://live.staticflickr.com/173/378574804_d0028a9786_b.jpg", title: "Breakfast Panini", creator: "@joefoodie", source: "https://www.flickr.com/photos/98178986@N00/378574804", license: "CC BY 2.0" },
+      { price: "NT$160–220", image: "https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg?auto=compress&cs=tinysrgb&w=800", title: "Croissants", creator: "Pexels", source: "https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg", license: "Pexels License" },
+      { price: "NT$300", image: "https://live.staticflickr.com/3193/2409085893_ef652e7374_b.jpg", title: "Scrambled Eggs - The Commoner", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/2409085893", license: "CC BY-SA 2.0" },
+      { price: "NT$160", image: "https://live.staticflickr.com/8069/8168433744_0db2e52dbe.jpg", title: "Spinach and bacon quiche", creator: "kirinqueen", source: "https://www.flickr.com/photos/82181006@N00/8168433744", license: "CC BY-SA 2.0" },
+      { price: "NT$130", image: "https://live.staticflickr.com/7326/8856630216_d474bc40f6_m.jpg", title: "Whole Wheat Bagel, Cream Cheese, Orange Juice", creator: "diettogo1", source: "https://www.flickr.com/photos/92766653@N07/8856630216", license: "CC BY-SA 2.0" },
+      { price: "NT$220", image: "https://live.staticflickr.com/2537/4165412023_52d049e228_b.jpg", title: "Truffle & Parmesan Frites", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/4165412023", license: "CC BY-SA 2.0" },
+      { price: "NT$260–320", image: "https://live.staticflickr.com/3248/2310077830_a93102a8c9_b.jpg", title: "Chicken Katsu Curry with Rice", creator: "avlxyz", source: "https://www.flickr.com/photos/10559879@N00/2310077830", license: "CC BY-SA 2.0" },
+      { price: "半磅 NT$600 起", image: "https://live.staticflickr.com/1518/26328013311_9d409d793a_b.jpg", title: "Assembly's beautiful coffee bean packaging", creator: "Bex.Walton", source: "https://www.flickr.com/photos/7831824@N04/26328013311", license: "CC BY 2.0" },
+      { price: "單包 NT$45｜禮盒 NT$450 起", image: "https://live.staticflickr.com/5580/15132430796_78ed846bab_b.jpg", title: "Chemex - IMG_1284", creator: "Nicola since 1972", source: "https://www.flickr.com/photos/15216811@N06/15132430796", license: "CC BY 2.0" },
+      { price: "NT$280／5 入", image: "https://live.staticflickr.com/7345/13610569685_fd92f96f23_b.jpg", title: "Cold brew coffee", creator: "shalommama", source: "https://www.flickr.com/photos/77516069@N05/13610569685", license: "CC BY 2.0" },
+      { price: "NT$450", image: "https://live.staticflickr.com/65535/50326363981_bfec479a61_b.jpg", title: "Travel coffee cup", creator: "coffee-rank", source: "https://www.flickr.com/photos/189612330@N06/50326363981", license: "CC BY 2.0" },
+      { price: "NT$250 起", image: "https://live.staticflickr.com/4033/4527109051_0a907e3cca_b.jpg", title: "Animal reusable bags", creator: "foldablebags.com", source: "https://www.flickr.com/photos/49355552@N07/4527109051", license: "CC BY 2.0" },
+      { price: "NT$650 起", image: "https://live.staticflickr.com/3151/2459736776_0499d7a8b0_b.jpg", title: "24 Cookie Gift Box", creator: "drooooo", source: "https://www.flickr.com/photos/75106436@N00/2459736776", license: "CC BY 2.0" },
+      { price: "NT$250／瓶", image: "https://live.staticflickr.com/4193/33647188804_bb9efce46a.jpg", title: "Cold brew coffee bottles", creator: "YellowGreenFarmersMarket", source: "https://www.flickr.com/photos/82179181@N04/33647188804", license: "CC BY 2.0" },
     ];
     const productCards = document.querySelectorAll(".product-card");
+    const licenseUrls = {
+      "CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
+      "CC BY-SA 2.0": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "CC0 1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "Pexels License": "https://www.pexels.com/license/",
+    };
 
     if (productCards.length !== productPresentation.length) {
       throw new Error(`菜單產品資料數量不一致：卡片 ${productCards.length} 項，圖片與售價 ${productPresentation.length} 項`);
     }
 
     productCards.forEach((card, index) => {
-      const { image: imageId, price } = productPresentation[index];
+      const { image: imageUrl, price, title, creator, source, license } = productPresentation[index];
+      const productName = card.querySelector("h3").textContent.trim();
       const image = document.createElement("img");
       image.className = "product-image";
-      image.src = `https://images.unsplash.com/${imageId}?auto=format&fit=crop&w=800&q=80`;
-      image.alt = `${card.querySelector("h3").textContent.trim()} 示意圖片`;
+      image.src = imageUrl;
+      image.alt = `${productName} 示意圖片`;
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {
-        image.src = "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80";
+        const placeholder = document.createElement("div");
+        placeholder.className = "product-image-placeholder";
+        placeholder.setAttribute("role", "img");
+        placeholder.setAttribute("aria-label", `${productName} 示意圖片暫時無法載入`);
+        placeholder.textContent = "商品示意圖片暫時無法載入";
+        image.replaceWith(placeholder);
       }, { once: true });
 
       const body = document.createElement("div");
@@ -567,6 +594,20 @@
       priceLine.append(priceLabel, priceValue);
       body.append(priceLine);
       card.append(image, body);
+
+      const credit = document.createElement("li");
+      const sourceLink = document.createElement("a");
+      sourceLink.href = source;
+      sourceLink.target = "_blank";
+      sourceLink.rel = "noreferrer";
+      sourceLink.textContent = title;
+      const licenseLink = document.createElement("a");
+      licenseLink.href = licenseUrls[license];
+      licenseLink.target = "_blank";
+      licenseLink.rel = "noreferrer";
+      licenseLink.textContent = license;
+      credit.append(sourceLink, document.createTextNode(` — ${creator} · `), licenseLink);
+      document.querySelector("#image-credits").append(credit);
     });
 
     const menuButton = document.querySelector(".menu-toggle");
