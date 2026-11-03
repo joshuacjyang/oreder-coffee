@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="瀏覽 La cowbe du ste coffee 咖啡、特調、茶飲、甜點、輕食與咖啡周邊提案。正式品項與價格待店家確認。">
+  <title>完整菜單｜La cowbe du ste coffee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Iansui&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --cream: #f7f4ef;
+      --paper: #fffdf8;
+      --ink: #342820;
+      --muted: #766b5f;
+      --coffee: #694735;
+      --coffee-dark: #4c3428;
+      --caramel: #c49a6c;
+      --sage: #dce3d6;
+      --sage-dark: #67775f;
+      --line: rgba(52, 40, 32, .13);
+      --serif: "Iansui", Georgia, serif;
+      --sans: "DM Sans", "Noto Sans TC", sans-serif;
+      --content: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 136px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .container { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed;
+      z-index: 20;
+      top: 12px;
+      left: 12px;
+      transform: translateY(-160%);
+      border-radius: 6px;
+      padding: 10px 14px;
+      background: var(--ink);
+      color: white;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .notice-bar {
+      padding: 8px 20px;
+      background: var(--coffee-dark);
+      color: #fff9f0;
+      text-align: center;
+      font-size: .75rem;
+      letter-spacing: .08em;
+    }
+    .notice-bar span + span::before { content: "·"; padding-inline: 12px; color: var(--caramel); }
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgba(52,40,32,.07);
+      background: rgba(247,244,239,.94);
+      backdrop-filter: blur(14px);
+    }
+    .nav-wrap { display: flex; min-height: 82px; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 43px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(105,71,53,.28);
+      border-radius: 50%;
+      color: var(--coffee);
+    }
+    .brand-mark svg { width: 22px; height: 22px; }
+    .brand-name { display: grid; line-height: 1.15; }
+    .brand-name strong { font-family: var(--serif); font-size: 1.12rem; font-weight: 400; letter-spacing: .02em; }
+    .brand-name small { margin-top: 5px; color: var(--muted); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: clamp(18px,2.5vw,36px); margin: 0; padding: 0; list-style: none; }
+    .nav-links a { color: #53473d; font-size: .84rem; text-decoration: none; }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--coffee); }
+    .nav-links .nav-cta { padding: 11px 20px; color: white; }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .menu-toggle svg { width: 20px; height: 20px; }
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      padding: 0 22px;
+      background: var(--coffee);
+      color: white;
+      font-size: .84rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--coffee-dark); }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--caramel); outline-offset: 3px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(70px,10vw,128px) 0 clamp(58px,8vw,95px);
+      background:
+        radial-gradient(ellipse at 85% 12%, rgba(196,154,108,.16), transparent 34%),
+        var(--cream);
+      text-align: center;
+    }
+    .hero::after {
+      position: absolute;
+      right: -105px;
+      bottom: -240px;
+      width: 440px;
+      aspect-ratio: 1;
+      border: 1px solid rgba(105,71,53,.12);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--sage-dark);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before, .eyebrow::after { width: 25px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      margin: 18px 0 12px;
+      font-family: var(--serif);
+      font-size: clamp(3rem,7vw,5.5rem);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.1;
+    }
+    .hero p { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: .95rem; }
+    .proposal-note {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 710px;
+      margin-top: 28px;
+      border: 1px solid rgba(105,71,53,.16);
+      border-radius: 4px;
+      padding: 12px 16px;
+      background: rgba(255,253,248,.72);
+      color: var(--muted);
+      font-size: .76rem;
+      text-align: left;
+    }
+    .proposal-note strong { color: var(--coffee-dark); }
+    .proposal-note svg { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 2px; color: var(--coffee); }
+    .category-bar {
+      position: sticky;
+      z-index: 8;
+      top: 82px;
+      border-block: 1px solid var(--line);
+      background: rgba(255,253,248,.96);
+      backdrop-filter: blur(12px);
+    }
+    .category-nav { display: flex; justify-content: center; gap: 8px; overflow-x: auto; padding-block: 12px; scrollbar-width: none; }
+    .category-nav::-webkit-scrollbar { display: none; }
+    .category-nav a {
+      flex: 0 0 auto;
+      border: 1px solid transparent;
+      border-radius: 99px;
+      padding: 8px 14px;
+      color: var(--muted);
+      font-size: .76rem;
+      text-decoration: none;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .category-nav a:hover, .category-nav a:focus-visible { border-color: var(--line); background: var(--cream); color: var(--coffee); }
+    main { padding-bottom: 78px; }
+    .menu-category { padding-top: 70px; }
+    .category-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 23px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 17px;
+    }
+    .category-heading-main { display: flex; align-items: center; gap: 17px; }
+    .category-number {
+      display: grid;
+      width: 45px;
+      height: 45px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--sage-dark);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .category-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(1.7rem,3vw,2.35rem); font-weight: 400; line-height: 1.25; }
+    .category-heading p { max-width: 430px; margin: 0; color: var(--muted); font-size: .79rem; text-align: right; }
+    .product-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
+    .product-card {
+      display: flex;
+      min-height: 145px;
+      flex-direction: column;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 19px 20px 17px;
+      background: var(--paper);
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .product-card:hover { transform: translateY(-2px); border-color: rgba(105,71,53,.35); box-shadow: 0 8px 24px rgba(52,40,32,.06); }
+    .product-card h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.16rem; font-weight: 400; line-height: 1.4; }
+    .product-card p { margin: 0; color: var(--muted); font-size: .76rem; line-height: 1.7; }
+    .product-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(103,119,95,.2);
+      border-radius: 99px;
+      padding: 3px 9px;
+      background: #f1f3ed;
+      color: #5e6d57;
+      font-size: .64rem;
+      line-height: 1.55;
+    }
+    .tag-alcohol { border-color: rgba(145,91,51,.24); background: #f7eee3; color: #865733; }
+    .tag-caffeine-free { border-color: rgba(103,119,95,.2); background: #edf2e8; color: #52674c; }
+    .footer-callout { margin-top: 70px; padding: clamp(26px,5vw,48px); background: var(--coffee-dark); color: white; }
+    .footer-callout-inner { display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+    .footer-callout h2 { margin: 0 0 7px; font-family: var(--serif); font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 400; }
+    .footer-callout p { margin: 0; color: rgba(255,255,255,.72); font-size: .83rem; }
+    .footer-callout .button { flex: 0 0 auto; border-color: rgba(255,255,255,.48); background: transparent; }
+    .footer-callout .button:hover { background: white; color: var(--coffee-dark); }
+    .site-footer { padding: 30px 0; background: #eee9e1; }
+    .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+    .footer-brand { font-family: var(--serif); font-size: 1.05rem; text-decoration: none; }
+    .footer-copy, .footer-hours { margin: 0; color: var(--muted); font-size: .72rem; }
+    @media (max-width: 900px) {
+      .nav-wrap { min-height: 72px; }
+      .menu-toggle { display: grid; place-items: center; }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 8px 24px 18px;
+        background: var(--cream);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { display: block; padding: 12px 4px; }
+      .nav-links .nav-cta { margin-top: 8px; padding: 12px 18px; text-align: center; }
+      .category-bar { top: 72px; }
+      .product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .category-heading { align-items: flex-start; flex-direction: column; gap: 9px; }
+      .category-heading p { text-align: left; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 36px,var(--content)); }
+      .notice-bar { font-size: .67rem; letter-spacing: .03em; }
+      .notice-bar span + span::before { padding-inline: 7px; }
+      .brand-name strong { font-size: 1rem; }
+      .hero { padding: 68px 0 52px; }
+      .hero h1 { font-size: clamp(2.8rem,12vw,4rem); }
+      .hero p { font-size: .87rem; }
+      .proposal-note { font-size: .7rem; }
+      .category-nav { justify-content: flex-start; padding-inline: 18px; }
+      .category-nav a { padding-inline: 12px; }
+      main { padding-bottom: 60px; }
+      .menu-category { padding-top: 54px; }
+      .category-heading-main { align-items: flex-start; gap: 12px; }
+      .category-number { width: 38px; height: 38px; }
+      .category-heading h2 { font-size: 1.65rem; }
+      .product-grid { grid-template-columns: 1fr; gap: 9px; }
+      .product-card { min-height: 0; padding: 16px 17px; }
+      .product-meta { padding-top: 10px; }
+      .footer-callout-inner { align-items: flex-start; flex-direction: column; }
+      .footer-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <div class="notice-bar" aria-label="營業時間"><span>週一至週六 09:00–22:00</span><span>每週日公休</span></div>
+  <header class="site-header">
+    <nav class="container nav-wrap" aria-label="主要導覽">
+      <a class="brand" href="index.html" aria-label="La cowbe du ste coffee 首頁">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17M8 5c0-1 1-1.3 1-2.5M12 5c0-1 1-1.3 1-2.5"/></svg>
+        </span>
+        <span class="brand-name"><strong>La cowbe du ste coffee</strong><small>台南・咖啡與日常</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="primary-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="primary-links">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="index.html#about">關於我們</a></li>
+        <li><a href="menu.html" aria-current="page">完整菜單</a></li>
+        <li><a href="index.html#gallery">空間氛圍</a></li>
+        <li><a href="index.html#contact">聯絡我們</a></li>
+        <li><a class="button nav-cta" href="index.html#reservation">線上預約 <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container">
+      <span class="eyebrow">Good things for every moment</span>
+      <h1 id="page-title">完整菜單</h1>
+      <p>從每日咖啡到手作甜點，找一份今天想享受的風味。</p>
+      <div class="proposal-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span><strong>菜單提案，尚待確認：</strong>以下為規劃品項，實際供應、品名、選項與價格請以店家確認後的正式菜單為準。</span>
+      </div>
+    </div>
+  </section>
+
+  <nav class="category-bar" aria-label="菜單分類">
+    <div class="category-nav">
+      <a href="#espresso">義式咖啡</a>
+      <a href="#specialty">特調手沖</a>
+      <a href="#non-coffee">非咖啡飲品</a>
+      <a href="#desserts">甜點</a>
+      <a href="#light-meals">鹹食輕食</a>
+      <a href="#merchandise">周邊商品</a>
+    </div>
+  </nav>
+
+  <main class="container" id="main">
+    <section class="menu-category" id="espresso" aria-labelledby="espresso-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">01</span><h2 id="espresso-title">義式咖啡系列</h2></div>
+        <p>濃縮咖啡與牛奶的經典搭配，從熟悉的日常到清爽新口味。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>美式咖啡</h3><p>經典熱美式，亦可選冰搖美式。</p><div class="product-meta"><span class="tag">經典</span><span class="tag">冰搖</span></div></article>
+        <article class="product-card"><h3>拿鐵</h3><p>原味拿鐵，可選燕麥奶或風味糖漿。</p><div class="product-meta"><span class="tag">原味</span><span class="tag">燕麥奶</span><span class="tag">香草</span><span class="tag">焦糖</span></div></article>
+        <article class="product-card"><h3>卡布奇諾</h3><p>經典咖啡與奶泡搭配，可佐桂皮或可可粉。</p><div class="product-meta"><span class="tag">桂皮</span><span class="tag">可可粉</span></div></article>
+        <article class="product-card"><h3>摩卡咖啡</h3><p>濃縮咖啡、可可與熱牛奶的香醇組合。</p></article>
+        <article class="product-card"><h3>焦糖瑪奇朵</h3><p>咖啡與焦糖風味交織的經典飲品。</p></article>
+        <article class="product-card"><h3>小白咖啡 Flat White</h3><p>奶泡較薄，咖啡風味更鮮明。</p></article>
+        <article class="product-card"><h3>西西里檸檬咖啡</h3><p>檸檬果香與咖啡交融，清爽酸香。</p><div class="product-meta"><span class="tag">清爽果香</span></div></article>
+        <article class="product-card"><h3>氣泡咖啡</h3><p>濃縮咖啡搭配氣泡水，可選柚子或青梅。</p><div class="product-meta"><span class="tag">柚子</span><span class="tag">青梅</span></div></article>
+        <article class="product-card"><h3>髒髒咖啡 Dirty</h3><p>冷牛奶直接注入熱濃縮，呈現分明層次。</p></article>
+      </div>
+    </section>
+
+    <section class="menu-category" id="specialty" aria-labelledby="specialty-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">02</span><h2 id="specialty-title">特調與手沖咖啡</h2></div>
+        <p>展現咖啡豆產區風味與咖啡師手藝的特色品項。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>單品手沖咖啡</h3><p>依當日選豆提供不同產區與風味輪廓。</p><div class="product-meta"><span class="tag">酸甜果香</span><span class="tag">花香</span><span class="tag">酒香</span><span class="tag">堅果厚實</span></div></article>
+        <article class="product-card"><h3>冰滴／冷萃咖啡</h3><p>低溫萃取，風味圓潤順口。</p><div class="product-meta"><span class="tag">Cold Brew</span></div></article>
+        <article class="product-card"><h3>桂花蜜拿鐵</h3><p>桂花蜜香與拿鐵交織的花香風味。</p></article>
+        <article class="product-card"><h3>黑糖烤奶拿鐵</h3><p>表層炙燒黑糖，帶有焦香脆感。</p></article>
+        <article class="product-card"><h3>生椰拿鐵</h3><p>椰奶搭配濃縮咖啡，口感濃郁滑順。</p></article>
+        <article class="product-card"><h3>愛爾蘭咖啡</h3><p>咖啡加入少量威士忌，含酒精。</p><div class="product-meta"><span class="tag tag-alcohol">含酒精</span></div></article>
+        <article class="product-card"><h3>阿法奇朵 Affogato</h3><p>香草冰淇淋淋上熱濃縮咖啡。</p></article>
+      </div>
+    </section>
+
+    <section class="menu-category" id="non-coffee" aria-labelledby="non-coffee-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">03</span><h2 id="non-coffee-title">非咖啡飲品</h2></div>
+        <p>茶飲、可可與果香飲品，提供不同於咖啡的選擇。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>靜岡抹茶拿鐵</h3><p>可選加麻糬或紅豆。</p><div class="product-meta"><span class="tag">麻糬</span><span class="tag">紅豆</span></div></article>
+        <article class="product-card"><h3>法式濃郁可可</h3><p>濃郁可可風味，可選加烤棉花糖。</p><div class="product-meta"><span class="tag">烤棉花糖</span></div></article>
+        <article class="product-card"><h3>鍋煮奶茶</h3><p>手煮奶茶，可選阿薩姆或伯爵鮮奶茶。</p><div class="product-meta"><span class="tag">阿薩姆</span><span class="tag">伯爵</span></div></article>
+        <article class="product-card"><h3>高山烏龍／頂級紅玉紅茶</h3><p>茶飲可搭配熱壺回沖。</p><div class="product-meta"><span class="tag">熱壺回沖</span></div></article>
+        <article class="product-card"><h3>水果氣泡飲</h3><p>清爽氣泡飲，可選水蜜桃、巨峰葡萄或芒果。</p><div class="product-meta"><span class="tag">水蜜桃</span><span class="tag">巨峰葡萄</span><span class="tag">芒果</span></div></article>
+        <article class="product-card"><h3>花草有機茶</h3><p>花草茶選擇包含洋甘菊、玫瑰薄荷與莓果伏特加花茶。</p><div class="product-meta"><span class="tag tag-caffeine-free">洋甘菊／玫瑰薄荷：無咖啡因</span><span class="tag tag-alcohol">莓果伏特加：含酒精</span></div></article>
+        <article class="product-card"><h3>新鮮水果茶</h3><p>以百香果、蘋果與柳橙調製的綜合水果茶。</p></article>
+        <article class="product-card"><h3>黑糖鮮奶</h3><p>黑糖與鮮奶調和，不含咖啡因。</p><div class="product-meta"><span class="tag tag-caffeine-free">無咖啡因</span></div></article>
+      </div>
+    </section>
+
+    <section class="menu-category" id="desserts" aria-labelledby="desserts-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">04</span><h2 id="desserts-title">經典甜點</h2></div>
+        <p>為咖啡時光添一份甜，口味與每日供應品項待確認。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>大人味提拉米蘇</h3><p>帶有濃郁咖啡酒香的提拉米蘇。</p><div class="product-meta"><span class="tag tag-alcohol">含咖啡酒</span></div></article>
+        <article class="product-card"><h3>巴斯克乳酪蛋糕</h3><p>可規劃原味、抹茶或焙茶口味。</p><div class="product-meta"><span class="tag">原味</span><span class="tag">抹茶</span><span class="tag">焙茶</span></div></article>
+        <article class="product-card"><h3>焦糖烤布丁</h3><p>可選古早味或日式綿密口感。</p><div class="product-meta"><span class="tag">古早味</span><span class="tag">日式綿密</span></div></article>
+        <article class="product-card"><h3>肉桂捲</h3><p>可搭配奶油乳酪醬或焦糖胡桃。</p><div class="product-meta"><span class="tag">奶油乳酪醬</span><span class="tag">焦糖胡桃</span></div></article>
+        <article class="product-card"><h3>法式司康</h3><p>附手工果醬與奶油。</p></article>
+        <article class="product-card"><h3>美式軟餅乾</h3><p>可選巧克力軟心或抹茶白巧克力。</p><div class="product-meta"><span class="tag">巧克力軟心</span><span class="tag">抹茶白巧克力</span></div></article>
+        <article class="product-card"><h3>千層蛋糕</h3><p>可規劃抹茶、伯爵茶或季節水果口味。</p><div class="product-meta"><span class="tag">抹茶</span><span class="tag">伯爵茶</span><span class="tag">季節水果</span></div></article>
+        <article class="product-card"><h3>戚風蛋糕</h3><p>可規劃季節草莓、芒果或焙茶口味。</p><div class="product-meta"><span class="tag">季節草莓</span><span class="tag">芒果</span><span class="tag">焙茶</span></div></article>
+        <article class="product-card"><h3>法式可麗露</h3><p>外層酥脆、內裡柔軟的經典小點。</p></article>
+      </div>
+    </section>
+
+    <section class="menu-category" id="light-meals" aria-labelledby="light-meals-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">05</span><h2 id="light-meals-title">鹹食與輕食</h2></div>
+        <p>三明治、烘焙與分享餐點提案；完整熱食品項需依廚房設備確認。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>招牌三明治</h3><p>可規劃貓王三明治、帕瑪火腿起司或迷迭香雞腿。</p><div class="product-meta"><span class="tag">貓王</span><span class="tag">帕瑪火腿起司</span><span class="tag">迷迭香雞腿</span></div></article>
+        <article class="product-card"><h3>熱壓吐司／帕里尼</h3><p>可規劃古巴燉豬肉或鮪魚玉米起司口味。</p><div class="product-meta"><span class="tag">古巴燉豬肉</span><span class="tag">鮪魚玉米起司</span></div></article>
+        <article class="product-card"><h3>可頌系列</h3><p>可規劃牛肉起司可頌或明太子法棍。</p><div class="product-meta"><span class="tag">牛肉起司可頌</span><span class="tag">明太子法棍</span></div></article>
+        <article class="product-card"><h3>酸種麵包早午餐盤</h3><p>搭配燻雞、炒蛋與生菜沙拉。</p></article>
+        <article class="product-card"><h3>鹹派 Quiche</h3><p>可規劃法式菠菜培根或奶油野菇口味。</p><div class="product-meta"><span class="tag">菠菜培根</span><span class="tag">奶油野菇</span></div></article>
+        <article class="product-card"><h3>手作貝果</h3><p>抹醬可選奶油乳酪、藍莓或蒜香。</p><div class="product-meta"><span class="tag">奶油乳酪</span><span class="tag">藍莓</span><span class="tag">蒜香</span></div></article>
+        <article class="product-card"><h3>松露薯條／炸物拼盤</h3><p>適合下午茶時光分享的鹹點。</p></article>
+        <article class="product-card"><h3>日式咖哩飯／燉牛肉飯</h3><p>熱食飯類提案，需確認店內廚房及排煙設備。</p><div class="product-meta"><span class="tag">設備確認後規劃</span></div></article>
+      </div>
+    </section>
+
+    <section class="menu-category" id="merchandise" aria-labelledby="merchandise-title">
+      <div class="category-heading">
+        <div class="category-heading-main"><span class="category-number">06</span><h2 id="merchandise-title">周邊商品與咖啡豆</h2></div>
+        <p>把喜歡的咖啡風味與品牌日常，一起帶回家。</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card"><h3>精品咖啡豆</h3><p>自烘或嚴選咖啡豆，規劃半磅或一磅包裝。</p><div class="product-meta"><span class="tag">半磅</span><span class="tag">一磅</span></div></article>
+        <article class="product-card"><h3>濾掛式咖啡包</h3><p>可規劃單包裝或禮盒組。</p></article>
+        <article class="product-card"><h3>浸泡式冷萃咖啡包</h3><p>方便在家冷藏浸泡的咖啡包提案。</p></article>
+        <article class="product-card"><h3>品牌環保杯／隨行杯</h3><p>品牌識別杯款與外帶使用周邊。</p></article>
+        <article class="product-card"><h3>品牌帆布提袋／徽章</h3><p>以店家品牌識別延伸的生活小物。</p></article>
+        <article class="product-card"><h3>手工餅乾／濾掛禮盒</h3><p>可規劃手工餅乾禮盒或綜合濾掛禮盒。</p></article>
+        <article class="product-card"><h3>瓶裝咖啡濃縮液</h3><p>冷萃咖啡或濃縮咖啡液瓶裝提案。</p><div class="product-meta"><span class="tag">Cold Brew</span><span class="tag">Espresso</span></div></article>
+      </div>
+    </section>
+
+    <aside class="footer-callout" aria-label="預約資訊">
+      <div class="footer-callout-inner">
+        <div><h2>找一個喜歡的品項，來店裡坐坐。</h2><p>台南市青年路 3666 號 · 週一至週六 09:00–22:00 · 每週日公休</p></div>
+        <a class="button" href="index.html#reservation">了解線上預約 <span aria-hidden="true">→</span></a>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <a class="footer-brand" href="index.html">La cowbe du ste coffee</a>
+      <p class="footer-copy">© <span id="year">2026</span> La cowbe du ste coffee. All rights reserved.</p>
+      <span class="footer-hours">週一至週六 09:00–22:00 · 週日公休</span>
+    </div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector("#primary-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+      menuButton.setAttribute("aria-expanded", String(!isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "開啟導覽選單" : "關閉導覽選單");
+      navigation.classList.toggle("is-open", !isOpen);
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "開啟導覽選單");
+        navigation.classList.remove("is-open");
+      }
+    });
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
