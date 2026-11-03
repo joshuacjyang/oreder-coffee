@@ -175,6 +175,8 @@
     }
     .proposal-note strong { color: var(--coffee-dark); }
     .proposal-note svg { flex: 0 0 auto; width: 17px; height: 17px; margin-top: 2px; color: var(--coffee); }
+    .price-sources { display: block; margin-top: 8px; }
+    .price-sources a { color: var(--coffee); text-decoration-thickness: 1px; text-underline-offset: 2px; }
     .category-bar {
       position: sticky;
       z-index: 8;
@@ -226,19 +228,24 @@
     .product-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
     .product-card {
       display: flex;
-      min-height: 145px;
+      min-height: 330px;
       flex-direction: column;
       align-items: flex-start;
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 4px;
-      padding: 19px 20px 17px;
       background: var(--paper);
       transition: border-color .2s, transform .2s, box-shadow .2s;
     }
     .product-card:hover { transform: translateY(-2px); border-color: rgba(105,71,53,.35); box-shadow: 0 8px 24px rgba(52,40,32,.06); }
+    .product-image { display: block; width: 100%; aspect-ratio: 1.72; flex: 0 0 auto; object-fit: cover; background: var(--sage); }
+    .product-card-body { display: flex; width: 100%; flex: 1; flex-direction: column; align-items: flex-start; padding: 17px 18px 15px; }
     .product-card h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.16rem; font-weight: 400; line-height: 1.4; }
     .product-card p { margin: 0; color: var(--muted); font-size: .76rem; line-height: 1.7; }
     .product-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px; }
+    .product-price { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 13px; border-top: 1px solid var(--line); padding-top: 10px; }
+    .product-price span { color: var(--muted); font-size: .65rem; }
+    .product-price strong { color: var(--coffee-dark); font-size: .9rem; font-weight: 700; white-space: nowrap; }
     .tag {
       display: inline-flex;
       align-items: center;
@@ -302,7 +309,8 @@
       .category-number { width: 38px; height: 38px; }
       .category-heading h2 { font-size: 1.65rem; }
       .product-grid { grid-template-columns: 1fr; gap: 9px; }
-      .product-card { min-height: 0; padding: 16px 17px; }
+      .product-card { min-height: 0; }
+      .product-card-body { padding: 15px 16px 14px; }
       .product-meta { padding-top: 10px; }
       .footer-callout-inner { align-items: flex-start; flex-direction: column; }
       .footer-row { align-items: flex-start; flex-direction: column; gap: 8px; }
@@ -344,7 +352,7 @@
       <p>從每日咖啡到手作甜點，找一份今天想享受的風味。</p>
       <div class="proposal-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-        <span><strong>菜單提案，尚待確認：</strong>以下為規劃品項，實際供應、品名、選項與價格請以店家確認後的正式菜單為準。</span>
+        <span><strong>建議售價，尚待店家確認：</strong>依台灣公開咖啡店菜單及零售價格，按品項成本與咖啡館定位估算，並非 La cowbe du ste coffee 正式售價。圖片均為 Unsplash 氛圍示意，非實際商品照。<span class="price-sources">參考來源：<a href="https://www.louisacoffee.co/products_list/10" target="_blank" rel="noreferrer">路易莎精品咖啡菜單</a>（拿鐵 NT$90–110、Flat White NT$75、手沖 NT$95–115）、<a href="https://www.camacafe.com/Menu/1" target="_blank" rel="noreferrer">cama 飲品菜單</a>（手沖 NT$95–240）與<a href="https://www.camacafe.com/Menu/3" target="_blank" rel="noreferrer">餐食菜單</a>（三明治 NT$85–95、蛋糕 NT$45–100）、<a href="https://www.grgr.tw/products/coffeetaiwan" target="_blank" rel="noreferrer">台灣咖啡豆半磅參考</a>（NT$600）。市場與品項規格不同，建議售價仍應依實際成本調整。</span></span>
       </div>
     </div>
   </section>
@@ -479,6 +487,88 @@
     </div>
   </footer>
   <script>
+    const productPresentation = [
+      { price: "NT$95", image: "photo-1495474472287-4d71bcdd2085" },
+      { price: "NT$125", image: "photo-1461023058943-07fcbe16d735" },
+      { price: "NT$125", image: "photo-1511920170033-f8396924c348" },
+      { price: "NT$145", image: "photo-1442512595331-e89e73853f31" },
+      { price: "NT$150", image: "photo-1509042239860-f550ce710b93" },
+      { price: "NT$140", image: "photo-1501339847302-ac426a4a7cbb" },
+      { price: "NT$150", image: "photo-1498804103079-a6351b050096" },
+      { price: "NT$150", image: "photo-1517701550927-30cf4ba1dba5" },
+      { price: "NT$150", image: "photo-1559056199-641a0ac8b55e" },
+      { price: "NT$180 起", image: "photo-1459755486867-b55449bb39ff" },
+      { price: "NT$150", image: "photo-1541167760496-1628856ab772" },
+      { price: "NT$160", image: "photo-1511920170033-f8396924c348" },
+      { price: "NT$165", image: "photo-1442512595331-e89e73853f31" },
+      { price: "NT$160", image: "photo-1495474472287-4d71bcdd2085" },
+      { price: "NT$220", image: "photo-1559056199-641a0ac8b55e" },
+      { price: "NT$180", image: "photo-1461023058943-07fcbe16d735" },
+      { price: "NT$150", image: "photo-1544787219-7f47ccb76574" },
+      { price: "NT$150", image: "photo-1556679343-c7306c1976bc" },
+      { price: "NT$150", image: "photo-1513558161293-cdaf765edfd4" },
+      { price: "NT$170", image: "photo-1495474472287-4d71bcdd2085" },
+      { price: "NT$150", image: "photo-1497534446932-c925b458314e" },
+      { price: "NT$150", image: "photo-1544145945-f90425340c7e" },
+      { price: "NT$180", image: "photo-1546173159-315724a31696" },
+      { price: "NT$130", image: "photo-1513558161293-cdaf765edfd4" },
+      { price: "NT$180", image: "photo-1488477181946-6428a0291777" },
+      { price: "NT$170", image: "photo-1578985545062-69928b1d9587" },
+      { price: "NT$100", image: "photo-1606313564200-e75d5e30476c" },
+      { price: "NT$150", image: "photo-1563729784474-d77dbb933a9e" },
+      { price: "NT$100", image: "photo-1509440159596-0249088772ff" },
+      { price: "NT$85", image: "photo-1551024506-0bccd828d307" },
+      { price: "NT$180", image: "photo-1586985289688-ca3cf47d3e6e" },
+      { price: "NT$150", image: "photo-1565958011703-44f9829ba187" },
+      { price: "NT$90", image: "photo-1606890737304-57a1ca8a5b62" },
+      { price: "NT$190–240", image: "photo-1553909489-cd47e0ef937f" },
+      { price: "NT$170–210", image: "photo-1528735602780-2552fd46c7af" },
+      { price: "NT$160–220", image: "photo-1484723091739-30a097e8f929" },
+      { price: "NT$300", image: "photo-1547592180-85f173990554" },
+      { price: "NT$160", image: "photo-1546069901-ba9599a7e63c" },
+      { price: "NT$130", image: "photo-1540189549336-e6e99c3679fe" },
+      { price: "NT$220", image: "photo-1555939594-58d7cb561ad1" },
+      { price: "NT$260–320", image: "photo-1559847844-5315695dadae" },
+      { price: "半磅 NT$600 起", image: "photo-1447933601403-0c6688de566e" },
+      { price: "單包 NT$45｜禮盒 NT$450 起", image: "photo-1459755486867-b55449bb39ff" },
+      { price: "NT$280／5 入", image: "photo-1461023058943-07fcbe16d735" },
+      { price: "NT$450", image: "photo-1509042239860-f550ce710b93" },
+      { price: "NT$250 起", image: "photo-1498804103079-a6351b050096" },
+      { price: "NT$650 起", image: "photo-1488477181946-6428a0291777" },
+      { price: "NT$250／瓶", image: "photo-1511920170033-f8396924c348" },
+    ];
+    const productCards = document.querySelectorAll(".product-card");
+
+    if (productCards.length !== productPresentation.length) {
+      throw new Error(`菜單產品資料數量不一致：卡片 ${productCards.length} 項，圖片與售價 ${productPresentation.length} 項`);
+    }
+
+    productCards.forEach((card, index) => {
+      const { image: imageId, price } = productPresentation[index];
+      const image = document.createElement("img");
+      image.className = "product-image";
+      image.src = `https://images.unsplash.com/${imageId}?auto=format&fit=crop&w=800&q=80`;
+      image.alt = `${card.querySelector("h3").textContent.trim()} 示意圖片`;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => {
+        image.src = "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80";
+      }, { once: true });
+
+      const body = document.createElement("div");
+      body.className = "product-card-body";
+      while (card.firstChild) body.append(card.firstChild);
+      const priceLine = document.createElement("div");
+      priceLine.className = "product-price";
+      const priceLabel = document.createElement("span");
+      priceLabel.textContent = "建議售價";
+      const priceValue = document.createElement("strong");
+      priceValue.textContent = price;
+      priceLine.append(priceLabel, priceValue);
+      body.append(priceLine);
+      card.append(image, body);
+    });
+
     const menuButton = document.querySelector(".menu-toggle");
     const navigation = document.querySelector("#primary-links");
 
