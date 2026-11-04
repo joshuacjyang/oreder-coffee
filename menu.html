@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f4ef">
-  <meta name="description" content="瀏覽 La cowbe du ste coffee 咖啡、特調、茶飲、甜點、輕食與咖啡周邊提案。正式品項與價格待店家確認。">
+  <meta name="description" content="瀏覽 La cowbe du ste coffee 咖啡、非咖啡飲品、甜點、輕食及周邊商品菜單與價格。">
   <title>完整菜單｜La cowbe du ste coffee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,6 +248,7 @@
     .product-card-body { display: flex; width: 100%; flex: 1; flex-direction: column; align-items: flex-start; padding: 17px 18px 15px; }
     .product-card h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.16rem; font-weight: 400; line-height: 1.4; }
     .product-card p { margin: 0; color: var(--muted); font-size: .76rem; line-height: 1.7; }
+    .product-card .product-english { margin-bottom: 7px; color: var(--sage-dark); font-size: .68rem; letter-spacing: .04em; }
     .product-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 14px; }
     .product-price { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 13px; border-top: 1px solid var(--line); padding-top: 10px; }
     .product-price span { color: var(--muted); font-size: .65rem; }
@@ -359,12 +360,12 @@
     <div class="container">
       <span class="eyebrow">Good things for every moment</span>
       <h1 id="page-title">完整菜單</h1>
-      <p>從每日咖啡到手作甜點，找一份今天想享受的風味。</p>
+      <p>從咖啡與茶飲，到手作甜點和輕食，找一份今天想享受的風味。</p>
       <div class="proposal-note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
-        <span><strong>建議售價，尚待店家確認：</strong>依台灣公開咖啡店菜單及零售價格，按品項成本與咖啡館定位估算，並非 La cowbe du ste coffee 正式售價。圖片為依品項挑選的網路授權示意照片，非實際商品照。<span class="price-sources">參考來源：<a href="https://www.louisacoffee.co/products_list/10" target="_blank" rel="noreferrer">路易莎精品咖啡菜單</a>（拿鐵 NT$90–110、Flat White NT$75、手沖 NT$95–115）、<a href="https://www.camacafe.com/Menu/1" target="_blank" rel="noreferrer">cama 飲品菜單</a>（手沖 NT$95–240）與<a href="https://www.camacafe.com/Menu/3" target="_blank" rel="noreferrer">餐食菜單</a>（三明治 NT$85–95、蛋糕 NT$45–100）、<a href="https://www.grgr.tw/products/coffeetaiwan" target="_blank" rel="noreferrer">台灣咖啡豆半磅參考</a>（NT$600）。市場與品項規格不同，建議售價仍應依實際成本調整。</span></span>
+        <span><strong>菜單品項與價格：</strong>依 menu.json 資料呈現，幣別為新台幣。圖片為依品項挑選的網路授權示意照片，非實際商品照。</span>
         <details class="image-sources">
-          <summary>查看 18 張照片的來源與授權</summary>
+          <summary>查看 12 張照片的來源與授權</summary>
           <ol id="image-credits"></ol>
         </details>
       </div>
@@ -373,8 +374,7 @@
 
   <nav class="category-bar" aria-label="菜單分類">
     <div class="category-nav">
-      <a href="#espresso">義式咖啡</a>
-      <a href="#specialty">特調手沖</a>
+      <a href="#coffee">咖啡系列</a>
       <a href="#non-coffee">非咖啡飲品</a>
       <a href="#desserts">甜點</a>
       <a href="#light-meals">鹹食輕食</a>
@@ -383,75 +383,60 @@
   </nav>
 
   <main class="container" id="main">
-    <section class="menu-category" id="espresso" aria-labelledby="espresso-title">
+    <section class="menu-category" id="coffee" aria-labelledby="coffee-title">
       <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">01</span><h2 id="espresso-title">義式咖啡系列</h2></div>
-        <p>濃縮咖啡與牛奶的經典搭配，從熟悉的日常到清爽新口味。</p>
+        <div class="category-heading-main"><span class="category-number">01</span><h2 id="coffee-title">咖啡系列</h2></div>
+        <p>以經典咖啡與香醇奶香，陪伴日常每一刻。</p>
       </div>
       <div class="product-grid">
-        <article class="product-card"><h3>美式咖啡</h3><p>經典熱美式，亦可選冰搖美式。</p><div class="product-meta"><span class="tag">經典</span><span class="tag">冰搖</span></div></article>
-        <article class="product-card"><h3>拿鐵</h3><p>原味拿鐵，可選燕麥奶或風味糖漿。</p><div class="product-meta"><span class="tag">原味</span><span class="tag">燕麥奶</span><span class="tag">香草</span><span class="tag">焦糖</span></div></article>
-        <article class="product-card"><h3>卡布奇諾</h3><p>經典咖啡與奶泡搭配，可佐桂皮或可可粉。</p><div class="product-meta"><span class="tag">桂皮</span><span class="tag">可可粉</span></div></article>
-      </div>
-    </section>
-
-    <section class="menu-category" id="specialty" aria-labelledby="specialty-title">
-      <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">02</span><h2 id="specialty-title">特調與手沖咖啡</h2></div>
-        <p>展現咖啡豆產區風味與咖啡師手藝的特色品項。</p>
-      </div>
-      <div class="product-grid">
-        <article class="product-card"><h3>單品手沖咖啡</h3><p>依當日選豆提供不同產區與風味輪廓。</p><div class="product-meta"><span class="tag">酸甜果香</span><span class="tag">花香</span><span class="tag">酒香</span><span class="tag">堅果厚實</span></div></article>
-        <article class="product-card"><h3>冰滴／冷萃咖啡</h3><p>低溫萃取，風味圓潤順口。</p><div class="product-meta"><span class="tag">Cold Brew</span></div></article>
-        <article class="product-card"><h3>桂花蜜拿鐵</h3><p>桂花蜜香與拿鐵交織的花香風味。</p></article>
+        <article class="product-card"><h3>美式咖啡</h3><p class="product-english">Classic Americano</p><p>嚴選中深烘焙綜合豆，帶有濃郁堅果與可可風味。</p></article>
+        <article class="product-card"><h3>經典拿鐵</h3><p class="product-english">Caffè Latte</p><p>濃縮咖啡搭配香醇蒸氣牛奶，口感滑順細緻。</p></article>
+        <article class="product-card"><h3>焦糖瑪奇朵</h3><p class="product-english">Caramel Macchiato</p><p>香草風味糖漿融合濃縮咖啡，淋上香濃焦糖醬。</p></article>
       </div>
     </section>
 
     <section class="menu-category" id="non-coffee" aria-labelledby="non-coffee-title">
       <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">03</span><h2 id="non-coffee-title">非咖啡飲品</h2></div>
-        <p>茶飲、可可與果香飲品，提供不同於咖啡的選擇。</p>
+        <div class="category-heading-main"><span class="category-number">02</span><h2 id="non-coffee-title">非咖啡飲品</h2></div>
+        <p>以抹茶、可可和新鮮水果，帶來豐富的茶飲風味。</p>
       </div>
       <div class="product-grid">
-        <article class="product-card"><h3>靜岡抹茶拿鐵</h3><p>可選加麻糬或紅豆。</p><div class="product-meta"><span class="tag">麻糬</span><span class="tag">紅豆</span></div></article>
-        <article class="product-card"><h3>法式濃郁可可</h3><p>濃郁可可風味，可選加烤棉花糖。</p><div class="product-meta"><span class="tag">烤棉花糖</span></div></article>
-        <article class="product-card"><h3>鍋煮奶茶</h3><p>手煮奶茶，可選阿薩姆或伯爵鮮奶茶。</p><div class="product-meta"><span class="tag">阿薩姆</span><span class="tag">伯爵</span></div></article>
+        <article class="product-card"><h3>靜岡抹茶拿鐵</h3><p class="product-english">Shizuoka Matcha Latte</p><p>選用日本靜岡抹茶粉，搭配優質鮮奶，茶香濃郁。</p></article>
+        <article class="product-card"><h3>濃情熱可可</h3><p class="product-english">Classic Hot Chocolate</p><p>特濃法式可可粉沖泡，微甜不膩，暖心首選。</p></article>
+        <article class="product-card"><h3>盛夏水果茶</h3><p class="product-english">Fresh Fruit Tea</p><p>以基底紅茶搭配新鮮季節水果，酸甜爽口。</p></article>
       </div>
     </section>
 
     <section class="menu-category" id="desserts" aria-labelledby="desserts-title">
       <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">04</span><h2 id="desserts-title">經典甜點</h2></div>
-        <p>為咖啡時光添一份甜，口味與每日供應品項待確認。</p>
+        <div class="category-heading-main"><span class="category-number">03</span><h2 id="desserts-title">經典甜點</h2></div>
+        <p>以經典甜點搭配一杯咖啡，享受剛剛好的甜。</p>
       </div>
       <div class="product-grid">
-        <article class="product-card"><h3>大人味提拉米蘇</h3><p>帶有濃郁咖啡酒香的提拉米蘇。</p><div class="product-meta"><span class="tag tag-alcohol">含咖啡酒</span></div></article>
-        <article class="product-card"><h3>巴斯克乳酪蛋糕</h3><p>可規劃原味、抹茶或焙茶口味。</p><div class="product-meta"><span class="tag">原味</span><span class="tag">抹茶</span><span class="tag">焙茶</span></div></article>
-        <article class="product-card"><h3>焦糖烤布丁</h3><p>可選古早味或日式綿密口感。</p><div class="product-meta"><span class="tag">古早味</span><span class="tag">日式綿密</span></div></article>
+        <article class="product-card"><h3>義式提拉米蘇</h3><p class="product-english">Classic Tiramisu</p><p>馬斯卡彭乳酪浸潤浸泡咖啡液的手指餅乾，入口即化。</p></article>
+        <article class="product-card"><h3>巴斯克乳酪蛋糕</h3><p class="product-english">Basque Burnt Cheesecake</p><p>表層焦香濃郁，內餡半熟綿密，起司香氣十足。</p></article>
       </div>
     </section>
 
     <section class="menu-category" id="light-meals" aria-labelledby="light-meals-title">
       <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">05</span><h2 id="light-meals-title">鹹食與輕食</h2></div>
-        <p>三明治、烘焙與分享餐點提案；完整熱食品項需依廚房設備確認。</p>
+        <div class="category-heading-main"><span class="category-number">04</span><h2 id="light-meals-title">鹹食與輕食</h2></div>
+        <p>酥脆烘焙與熱壓輕食，適合為午後補充元氣。</p>
       </div>
       <div class="product-grid">
-        <article class="product-card"><h3>招牌三明治</h3><p>可規劃貓王三明治、帕瑪火腿起司或迷迭香雞腿。</p><div class="product-meta"><span class="tag">貓王</span><span class="tag">帕瑪火腿起司</span><span class="tag">迷迭香雞腿</span></div></article>
-        <article class="product-card"><h3>熱壓吐司／帕里尼</h3><p>可規劃古巴燉豬肉或鮪魚玉米起司口味。</p><div class="product-meta"><span class="tag">古巴燉豬肉</span><span class="tag">鮪魚玉米起司</span></div></article>
-        <article class="product-card"><h3>可頌系列</h3><p>可規劃牛肉起司可頌或明太子法棍。</p><div class="product-meta"><span class="tag">牛肉起司可頌</span><span class="tag">明太子法棍</span></div></article>
+        <article class="product-card"><h3>牛肉起司可頌</h3><p class="product-english">Beef &amp; Cheese Croissant</p><p>酥脆千層可頌夾入特選煙燻牛肉與香濃起司。</p></article>
+        <article class="product-card"><h3>燻雞帕尼尼</h3><p class="product-english">Smoked Chicken Panini</p><p>熱壓外皮香脆，包裹嫩滑燻雞肉與牽絲起司。</p></article>
       </div>
     </section>
 
     <section class="menu-category" id="merchandise" aria-labelledby="merchandise-title">
       <div class="category-heading">
-        <div class="category-heading-main"><span class="category-number">06</span><h2 id="merchandise-title">周邊商品與咖啡豆</h2></div>
-        <p>把喜歡的咖啡風味與品牌日常，一起帶回家。</p>
+        <div class="category-heading-main"><span class="category-number">05</span><h2 id="merchandise-title">周邊商品</h2></div>
+        <p>把喜歡的品牌日常與咖啡時光，一起帶回家。</p>
       </div>
       <div class="product-grid">
-        <article class="product-card"><h3>精品咖啡豆</h3><p>自烘或嚴選咖啡豆，規劃半磅或一磅包裝。</p><div class="product-meta"><span class="tag">半磅</span><span class="tag">一磅</span></div></article>
-        <article class="product-card"><h3>濾掛式咖啡包</h3><p>可規劃單包裝或禮盒組。</p></article>
-        <article class="product-card"><h3>浸泡式冷萃咖啡包</h3><p>方便在家冷藏浸泡的咖啡包提案。</p></article>
+        <article class="product-card"><h3>品牌陶瓷馬克杯 (360ml)</h3><p class="product-english">Brand Ceramic Mug</p><p>質感啞光釉面，手感溫潤，印有品牌專屬 Logo。</p></article>
+        <article class="product-card"><h3>不鏽鋼隨行保溫杯 (500ml)</h3><p class="product-english">Stainless Steel Tumbler</p><p>雙層真空不鏽鋼材質，長效保溫保冷，輕便好攜帶。</p></article>
       </div>
     </section>
 
@@ -521,9 +506,10 @@
       { price: "NT$650 起", image: "https://live.staticflickr.com/3151/2459736776_0499d7a8b0_b.jpg", title: "24 Cookie Gift Box", creator: "drooooo", source: "https://www.flickr.com/photos/75106436@N00/2459736776", license: "CC BY 2.0" },
       { price: "NT$250／瓶", image: "https://live.staticflickr.com/4193/33647188804_bb9efce46a.jpg", title: "Cold brew coffee bottles", creator: "YellowGreenFarmersMarket", source: "https://www.flickr.com/photos/82179181@N04/33647188804", license: "CC BY 2.0" },
     ];
-    // 商品展示資料依分類排序，每個分類取前三項，與畫面上的商品卡片保持一致。
-    const selectedProductIndexes = [0, 1, 2, 9, 10, 11, 16, 17, 18, 24, 25, 26, 33, 34, 35, 41, 42, 43];
+    // 圖片展示順序需與 menu.json 的分類及品項順序一致。
+    const selectedProductIndexes = [0, 1, 4, 16, 17, 22, 24, 25, 35, 34, 41, 44];
     const visibleProductPresentation = selectedProductIndexes.map((index) => productPresentation[index]);
+    const menuPrices = [100, 140, 150, 150, 130, 140, 140, 150, 110, 130, 350, 780];
     const productCards = document.querySelectorAll(".product-card");
     const licenseUrls = {
       "CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
@@ -538,7 +524,8 @@
     }
 
     productCards.forEach((card, index) => {
-      const { image: imageUrl, price, title, creator, source, license } = visibleProductPresentation[index];
+      const { image: imageUrl, title, creator, source, license } = visibleProductPresentation[index];
+      const price = `NT$${menuPrices[index]}`;
       const productName = card.querySelector("h3").textContent.trim();
       const image = document.createElement("img");
       image.className = "product-image";
@@ -561,7 +548,7 @@
       const priceLine = document.createElement("div");
       priceLine.className = "product-price";
       const priceLabel = document.createElement("span");
-      priceLabel.textContent = "建議售價";
+      priceLabel.textContent = "售價";
       const priceValue = document.createElement("strong");
       priceValue.textContent = price;
       priceLine.append(priceLabel, priceValue);
