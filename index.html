@@ -870,6 +870,9 @@
     const bookingFormStep = document.querySelector("#booking-form-step");
     const bookingReviewStep = document.querySelector("#booking-review-step");
     const bookingCompleteStep = document.querySelector("#booking-complete-step");
+    // 營業時段使用 24 小時制；關店時間不包含在可預約範圍內。
+    const OPEN_TIME = "09:00";
+    const CLOSE_TIME = "22:00";
 
     document.querySelectorAll("[data-open-reservation]").forEach((trigger) => {
       trigger.addEventListener("click", (event) => {
@@ -898,13 +901,19 @@
       bookingDateTime.setCustomValidity("");
       if (!bookingDateTime.value) return;
 
-      const selectedDate = new Date(bookingDateTime.value);
-      const hour = selectedDate.getHours();
-      const minute = selectedDate.getMinutes();
-      if (selectedDate.getDay() === 0) {
+      const match = bookingDateTime.value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/);
+      if (!match) {
+        bookingDateTime.setCustomValidity("請選擇有效的預約日期與時間。");
+        return;
+      }
+
+      const [, year, month, day, hour, minute] = match;
+      const weekday = new Date(Number(year), Number(month) - 1, Number(day)).getDay();
+      const selectedTime = `${hour}:${minute}`;
+      if (weekday === 0) {
         bookingDateTime.setCustomValidity("每週日公休，請選擇週一至週六的日期。");
-      } else if (hour < 9 || hour > 21 || minute !== 0) {
-        bookingDateTime.setCustomValidity("請選擇 09:00 至 21:00 間的整點時段。");
+      } else if (selectedTime < OPEN_TIME || selectedTime >= CLOSE_TIME || minute !== "00") {
+        bookingDateTime.setCustomValidity(`請選擇 ${OPEN_TIME} 至 ${CLOSE_TIME}（不含關店時間）間的整點時段。`);
       }
     }
 
