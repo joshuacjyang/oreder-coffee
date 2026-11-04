@@ -1,0 +1,88 @@
+{
+  "shop_name": "Cloud Coffee 雲端咖啡館",
+  "currency": "TWD",
+  "menu": {
+    "咖啡系列": [
+      {
+        "name": "美式咖啡",
+        "english_name": "Classic Americano",
+        "price": 100,
+        "description": "嚴選中深烘焙綜合豆，帶有濃郁堅果與可可風味。"
+      },
+      {
+        "name": "經典拿鐵",
+        "english_name": "Caffè Latte",
+        "price": 140,
+        "description": "濃縮咖啡搭配香醇蒸氣牛奶，口感滑順細緻。"
+      },
+      {
+        "name": "焦糖瑪奇朵",
+        "english_name": "Caramel Macchiato",
+        "price": 150,
+        "description": "香草風味糖漿融合濃縮咖啡，淋上香濃焦糖醬。"
+      }
+    ],
+    "非咖啡飲品": [
+      {
+        "name": "靜岡抹茶拿鐵",
+        "english_name": "Shizuoka Matcha Latte",
+        "price": 150,
+        "description": "選用日本靜岡抹茶粉，搭配優質鮮奶，茶香濃郁。"
+      },
+      {
+        "name": "濃情熱可可",
+        "english_name": "Classic Hot Chocolate",
+        "price": 130,
+        "description": "特濃法式可可粉沖泡，微甜不膩，暖心首選。"
+      },
+      {
+        "name": "盛夏水果茶",
+        "english_name": "Fresh Fruit Tea",
+        "price": 140,
+        "description": "以基底紅茶搭配新鮮季節水果，酸甜爽口。"
+      }
+    ],
+    "經典甜點": [
+      {
+        "name": "義式提拉米蘇",
+        "english_name": "Classic Tiramisu",
+        "price": 140,
+        "description": "馬斯卡彭乳酪浸潤浸泡咖啡液的手指餅乾，入口即化。"
+      },
+      {
+        "name": "巴斯克乳酪蛋糕",
+        "english_name": "Basque Burnt Cheesecake",
+        "price": 150,
+        "description": "表層焦香濃郁，內餡半熟綿密，起司香氣十足。"
+      }
+    ],
+    "鹹食與輕食": [
+      {
+        "name": "牛肉起司可頌",
+        "english_name": "Beef & Cheese Croissant",
+        "price": 110,
+        "description": "酥脆千層可頌夾入特選煙燻牛肉與香濃起司。"
+      },
+      {
+        "name": "燻雞帕尼尼",
+        "english_name": "Smoked Chicken Panini",
+        "price": 130,
+        "description": "熱壓外皮香脆，包裹嫩滑燻雞肉與牽絲起司。"
+      }
+    ],
+    "周邊商品": [
+      {
+        "name": "品牌陶瓷馬克杯 (360ml)",
+        "english_name": "Brand Ceramic Mug",
+        "price": 350,
+        "description": "質感啞光釉面，手感溫潤，印有品牌專屬 Logo。"
+      },
+      {
+        "name": "不鏽鋼隨行保溫杯 (500ml)",
+        "english_name": "Stainless Steel Tumbler",
+        "price": 780,
+        "description": "雙層真空不鏽鋼材質，長效保溫保冷，輕便好攜帶。"
+      }
+    ]
+  }
+}
