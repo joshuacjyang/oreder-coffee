@@ -8,7 +8,7 @@
   <title>La cowbe du ste coffee｜台南咖啡，慢慢享受</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Iansui&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iansui&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
@@ -22,8 +22,8 @@
       --sage: #dce3d6;
       --sage-dark: #67775f;
       --line: rgba(52, 40, 32, .13);
-      --serif: "Iansui", Georgia, serif;
-      --sans: "DM Sans", "Noto Sans TC", sans-serif;
+      --serif: 'Iansui', cursive, sans-serif;
+      --sans: 'Iansui', cursive, sans-serif;
       --content: 1180px;
     }
 
@@ -33,7 +33,7 @@
       margin: 0;
       background: var(--cream);
       color: var(--ink);
-      font-family: var(--sans);
+      font-family: 'Iansui', cursive, sans-serif;
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
@@ -393,6 +393,112 @@
     .footer-copy { margin: 0; color: var(--muted); font-size: .72rem; }
     .footer-hours { color: var(--muted); font-size: .72rem; }
 
+    .reservation-dialog {
+      width: min(620px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(90vh, 820px);
+      overflow: auto;
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 12px;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 0 28px 90px rgba(32,24,18,.28);
+    }
+    .reservation-dialog[open] { animation: modal-enter .22s ease-out; }
+    .reservation-dialog::backdrop {
+      background: rgba(37,30,25,.42);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    .reservation-dialog-inner { padding: clamp(24px, 5vw, 42px); }
+    .reservation-dialog-header {
+      position: relative;
+      margin-bottom: 28px;
+      padding-right: 48px;
+    }
+    .reservation-dialog-header .eyebrow { font-size: .67rem; }
+    .reservation-dialog-header h2 {
+      margin: 12px 0 7px;
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 5vw, 2.45rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .reservation-dialog-header p { margin: 0; color: var(--muted); font-size: .82rem; }
+    .modal-close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .modal-close svg { width: 18px; height: 18px; }
+    .booking-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
+    .booking-field { display: grid; gap: 7px; min-width: 0; }
+    .booking-field-full { grid-column: 1 / -1; }
+    .booking-field label { color: var(--ink); font-size: .82rem; font-weight: 600; }
+    .booking-field input, .booking-field select {
+      width: 100%;
+      min-height: 48px;
+      border: 1px solid rgba(52,40,32,.2);
+      border-radius: 5px;
+      padding: 10px 12px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-size: .88rem;
+    }
+    .booking-field input:focus, .booking-field select:focus {
+      border-color: var(--coffee);
+      outline: 3px solid rgba(196,154,108,.22);
+    }
+    .booking-field-hint { color: var(--muted); font-size: .71rem; }
+    .booking-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 26px; }
+    .booking-actions .button { min-height: 46px; cursor: pointer; }
+    .booking-review {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 18px;
+      margin: 0;
+      border-top: 1px solid var(--line);
+    }
+    .booking-review div { border-bottom: 1px solid var(--line); padding: 14px 0; }
+    .booking-review dt { margin-bottom: 4px; color: var(--muted); font-size: .74rem; }
+    .booking-review dd { margin: 0; overflow-wrap: anywhere; font-size: .91rem; }
+    .booking-notice {
+      border-radius: 5px;
+      padding: 14px 16px;
+      background: #edf1e9;
+      color: #4f6149;
+      font-size: .82rem;
+    }
+    .booking-success { padding: 10px 0 0; text-align: center; }
+    .booking-success-mark {
+      display: grid;
+      width: 58px;
+      height: 58px;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: var(--sage);
+      color: var(--sage-dark);
+      font-size: 1.55rem;
+    }
+    .booking-success h3 { margin-bottom: 8px; font-family: var(--serif); font-size: 1.6rem; font-weight: 400; }
+    .booking-success p { margin: 0; color: var(--muted); font-size: .86rem; }
+    @keyframes modal-enter {
+      from { opacity: 0; transform: translateY(10px) scale(.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
     @media (max-width: 900px) {
       .nav-wrap { min-height: 72px; }
       .menu-toggle { display: grid; place-items: center; }
@@ -454,9 +560,16 @@
       .contact-grid { gap: 30px; }
       .map-card { min-height: 250px; }
       .footer-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .reservation-dialog { width: calc(100% - 24px); max-height: 92vh; }
+      .reservation-dialog-inner { padding: 25px 20px; }
+      .reservation-dialog-header { margin-bottom: 22px; }
+      .booking-fields, .booking-review { grid-template-columns: 1fr; }
+      .booking-field-full { grid-column: auto; }
+      .booking-actions { flex-direction: column-reverse; }
+      .booking-actions .button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
 </head>
@@ -482,7 +595,7 @@
         <li><a href="menu.html">菜單</a></li>
         <li><a href="#gallery">空間氛圍</a></li>
         <li><a href="#contact">聯絡我們</a></li>
-        <li><a class="button nav-cta" href="#reservation">線上預約 <span aria-hidden="true">↗</span></a></li>
+        <li><a class="button nav-cta" href="#reservation" data-open-reservation>線上預約 <span aria-hidden="true">↗</span></a></li>
       </ul>
     </nav>
   </header>
@@ -495,7 +608,7 @@
           <h1 id="hero-title">Good Coffee,<br><span>Great Moments</span></h1>
           <p>在熟悉的城市裡，留一點時間給自己。來一杯用心沖煮的咖啡，享受剛剛好的放鬆與相聚。</p>
           <div class="hero-actions">
-            <a class="button" href="#reservation">預約一段好時光 <span aria-hidden="true">→</span></a>
+            <a class="button" href="#reservation" data-open-reservation>預約一段好時光 <span aria-hidden="true">→</span></a>
             <a class="button button-outline" href="menu.html">探索店內風味</a>
           </div>
           <div class="hero-meta">
@@ -610,15 +723,15 @@
         <div class="reservation-copy">
           <span class="eyebrow">Save your favorite spot</span>
           <h2 id="reservation-title">預約你的專屬角落</h2>
-          <p>線上預約表單正在準備中，開放後即可透過網站預約。每筆預約最多 10 位，每小時為一個時段；如需修改預約，請來電聯絡。</p>
+          <p>告訴我們你的到訪時間與喜歡的餐點，為下一段咖啡時光預留座位。每筆預約最多 10 位，每小時為一個時段。</p>
           <div class="reservation-facts">
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>週一至週六開放</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>09:00–22:00</span>
             <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg>每筆最多 10 人</span>
           </div>
-          <p class="reservation-note">目前尚未開放線上送出；聯絡電話與預約表單將於資訊確認後補上。</p>
+          <p class="reservation-note">此頁面目前提供預約資料確認示範，尚未連接實際訂位系統。</p>
         </div>
-        <a class="button" href="#contact">預約<span aria-hidden="true">→</span></a>
+        <button class="button" type="button" data-open-reservation>立即預約<span aria-hidden="true">→</span></button>
       </div>
     </section>
 
@@ -656,6 +769,80 @@
       <span class="footer-hours">週一至週六 09:00–22:00 · 週日公休</span>
     </div>
   </footer>
+  <dialog class="reservation-dialog" id="reservation-dialog" aria-labelledby="reservation-dialog-title" aria-describedby="reservation-dialog-description">
+    <div class="reservation-dialog-inner">
+      <header class="reservation-dialog-header">
+        <span class="eyebrow">A table for your moment</span>
+        <h2 id="reservation-dialog-title">預約資訊</h2>
+        <p id="reservation-dialog-description">填寫以下資料，下一步可再次確認預約內容。</p>
+        <button class="modal-close" type="button" data-close-reservation aria-label="關閉預約視窗">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </header>
+      <section id="booking-form-step" aria-labelledby="reservation-dialog-title">
+        <form id="booking-form">
+          <div class="booking-fields">
+            <div class="booking-field">
+              <label for="booking-name">姓名</label>
+              <input id="booking-name" name="name" type="text" autocomplete="name" maxlength="60" placeholder="請輸入預約人姓名" required>
+            </div>
+            <div class="booking-field">
+              <label for="booking-phone">電話</label>
+              <input id="booking-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="24" placeholder="例如：0912-345-678" required>
+            </div>
+            <div class="booking-field">
+              <label for="booking-guests">用餐人數</label>
+              <input id="booking-guests" name="guests" type="number" min="1" max="10" value="2" inputmode="numeric" required>
+              <span class="booking-field-hint">每筆預約 1 至 10 位</span>
+            </div>
+            <div class="booking-field">
+              <label for="booking-datetime">預約日期與時間</label>
+              <input id="booking-datetime" name="datetime" type="datetime-local" step="3600" required>
+              <span class="booking-field-hint">週一至週六，09:00–21:00，每小時一個時段</span>
+            </div>
+            <div class="booking-field booking-field-full">
+              <label for="booking-order">想先點些什麼？</label>
+              <select id="booking-order" name="order" required>
+                <option value="" selected disabled>請選擇餐點（可選擇暫不預點）</option>
+                <option value="拿鐵">拿鐵</option>
+                <option value="美式咖啡">美式咖啡</option>
+                <option value="手沖咖啡">手沖咖啡</option>
+                <option value="手作甜點">手作甜點</option>
+                <option value="輕食三明治">輕食三明治</option>
+                <option value="暫不預點">暫不預點</option>
+              </select>
+            </div>
+          </div>
+          <div class="booking-actions">
+            <button class="button button-outline" type="button" data-close-reservation>取消</button>
+            <button class="button" type="submit">確認預約 <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+      <section id="booking-review-step" aria-labelledby="reservation-dialog-title" hidden>
+        <dl class="booking-review">
+          <div><dt>姓名</dt><dd id="review-name"></dd></div>
+          <div><dt>電話</dt><dd id="review-phone"></dd></div>
+          <div><dt>用餐人數</dt><dd id="review-guests"></dd></div>
+          <div><dt>預約日期與時間</dt><dd id="review-datetime"></dd></div>
+          <div class="booking-field-full"><dt>點餐內容</dt><dd id="review-order"></dd></div>
+        </dl>
+        <p class="booking-notice">請再次確認以上資訊。這是前端示範頁面，確認後不會送出至實際訂位系統。</p>
+        <div class="booking-actions">
+          <button class="button button-outline" id="booking-edit" type="button">返回修改</button>
+          <button class="button" id="booking-confirm" type="button">確認資料 <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+      <section class="booking-success" id="booking-complete-step" aria-live="polite" hidden>
+        <span class="booking-success-mark" aria-hidden="true">✓</span>
+        <h3>預約資料確認完成</h3>
+        <p>謝謝你提供預約資訊。此示範頁尚未連接實際訂位系統，請透過電話與店家確認座位。</p>
+        <div class="booking-actions">
+          <button class="button" type="button" data-close-reservation>完成</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
   <script>
     const menuButton = document.querySelector(".menu-toggle");
     const navigation = document.querySelector("#primary-links");
@@ -673,6 +860,104 @@
         menuButton.setAttribute("aria-label", "開啟導覽選單");
         navigation.classList.remove("is-open");
       }
+    });
+
+    const reservationDialog = document.querySelector("#reservation-dialog");
+    const bookingForm = document.querySelector("#booking-form");
+    const bookingDateTime = document.querySelector("#booking-datetime");
+    const bookingName = document.querySelector("#booking-name");
+    const bookingPhone = document.querySelector("#booking-phone");
+    const bookingFormStep = document.querySelector("#booking-form-step");
+    const bookingReviewStep = document.querySelector("#booking-review-step");
+    const bookingCompleteStep = document.querySelector("#booking-complete-step");
+
+    document.querySelectorAll("[data-open-reservation]").forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        event.preventDefault();
+        updateBookingMinimum();
+        if (!reservationDialog.open) reservationDialog.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-close-reservation]").forEach((button) => {
+      button.addEventListener("click", () => reservationDialog.close());
+    });
+
+    reservationDialog.addEventListener("click", (event) => {
+      if (event.target === reservationDialog) reservationDialog.close();
+    });
+
+    function updateBookingMinimum() {
+      const minimum = new Date();
+      minimum.setMinutes(Math.ceil(minimum.getMinutes() / 60) * 60, 0, 0);
+      const localMinimum = new Date(minimum.getTime() - minimum.getTimezoneOffset() * 60000);
+      bookingDateTime.min = localMinimum.toISOString().slice(0, 16);
+    }
+
+    function validateBookingTime() {
+      bookingDateTime.setCustomValidity("");
+      if (!bookingDateTime.value) return;
+
+      const selectedDate = new Date(bookingDateTime.value);
+      const hour = selectedDate.getHours();
+      const minute = selectedDate.getMinutes();
+      if (selectedDate.getDay() === 0) {
+        bookingDateTime.setCustomValidity("每週日公休，請選擇週一至週六的日期。");
+      } else if (hour < 9 || hour > 21 || minute !== 0) {
+        bookingDateTime.setCustomValidity("請選擇 09:00 至 21:00 間的整點時段。");
+      }
+    }
+
+    bookingDateTime.addEventListener("input", validateBookingTime);
+    bookingDateTime.addEventListener("change", validateBookingTime);
+    bookingName.addEventListener("input", () => bookingName.setCustomValidity(""));
+    bookingPhone.addEventListener("input", () => bookingPhone.setCustomValidity(""));
+
+    bookingForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      bookingName.setCustomValidity(bookingName.value.trim() ? "" : "請輸入姓名。");
+      const phoneDigits = bookingPhone.value.replace(/\D/g, "");
+      const phoneFormatIsValid = /^[0-9+() -]+$/.test(bookingPhone.value.trim());
+      bookingPhone.setCustomValidity(phoneDigits.length >= 8 && phoneFormatIsValid ? "" : "請輸入至少 8 位數字的電話，可包含 +、括號、空格或連字號。");
+      validateBookingTime();
+      if (!bookingForm.reportValidity()) return;
+
+      const formData = new FormData(bookingForm);
+      const selectedDate = new Date(formData.get("datetime"));
+      const dateLabel = new Intl.DateTimeFormat("zh-TW", {
+        dateStyle: "long",
+        timeStyle: "short"
+      }).format(selectedDate);
+      document.querySelector("#review-name").textContent = formData.get("name").trim();
+      document.querySelector("#review-phone").textContent = formData.get("phone").trim();
+      document.querySelector("#review-guests").textContent = `${formData.get("guests")} 位`;
+      document.querySelector("#review-datetime").textContent = dateLabel;
+      document.querySelector("#review-order").textContent = formData.get("order");
+      bookingFormStep.hidden = true;
+      bookingReviewStep.hidden = false;
+      document.querySelector("#booking-confirm").focus();
+    });
+
+    document.querySelector("#booking-edit").addEventListener("click", () => {
+      bookingReviewStep.hidden = true;
+      bookingFormStep.hidden = false;
+      document.querySelector("#booking-name").focus();
+    });
+
+    document.querySelector("#booking-confirm").addEventListener("click", () => {
+      bookingReviewStep.hidden = true;
+      bookingCompleteStep.hidden = false;
+      bookingDialogTitle.textContent = "確認完成";
+      document.querySelector("#booking-complete-step [data-close-reservation]").focus();
+    });
+
+    const bookingDialogTitle = document.querySelector("#reservation-dialog-title");
+    reservationDialog.addEventListener("close", () => {
+      bookingForm.reset();
+      bookingFormStep.hidden = false;
+      bookingReviewStep.hidden = true;
+      bookingCompleteStep.hidden = true;
+      bookingDialogTitle.textContent = "預約資訊";
     });
 
     document.querySelector("#year").textContent = new Date().getFullYear();
