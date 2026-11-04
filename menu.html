@@ -506,31 +506,35 @@
       { price: "NT$650 起", image: "https://live.staticflickr.com/3151/2459736776_0499d7a8b0_b.jpg", title: "24 Cookie Gift Box", creator: "drooooo", source: "https://www.flickr.com/photos/75106436@N00/2459736776", license: "CC BY 2.0" },
       { price: "NT$250／瓶", image: "https://live.staticflickr.com/4193/33647188804_bb9efce46a.jpg", title: "Cold brew coffee bottles", creator: "YellowGreenFarmersMarket", source: "https://www.flickr.com/photos/82179181@N04/33647188804", license: "CC BY 2.0" },
     ];
-    // 圖片展示順序需與 menu.json 的分類及品項順序一致。
-    const selectedProductIndexes = [0, 1, 4, 16, 17, 22, 24, 25, 35, 34, 41, 44];
-    const visibleProductPresentation = selectedProductIndexes.map((index) => productPresentation[index]);
+    const productImageFiles = [
+      "Classic Americano.jpg",
+      "coffeelatte.jpg",
+      "caramelmacchiato.jpg",
+      "Matcha.jpg",
+      "Coaco.jpg",
+      "freshfruittea.jpg",
+      "Tiramisu.jpg",
+      "basquecheesecake.jpg",
+      "beef&cheesecroissant.jpg",
+      "smokedchickenpanini.jpg",
+      "ceramicmug.jpg",
+      "stainlesssteeltumbler.jpg",
+    ];
+    const productImageDirectory = "圖片/網站使用圖片/產品/";
     const menuPrices = [100, 140, 150, 150, 130, 140, 140, 150, 110, 130, 350, 780];
     const productCards = document.querySelectorAll(".product-card");
-    const licenseUrls = {
-      "CC BY 2.0": "https://creativecommons.org/licenses/by/2.0/",
-      "CC BY-SA 2.0": "https://creativecommons.org/licenses/by-sa/2.0/",
-      "CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "CC0 1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "Pexels License": "https://www.pexels.com/license/",
-    };
 
-    if (productCards.length !== visibleProductPresentation.length) {
-      throw new Error(`菜單產品資料數量不一致：卡片 ${productCards.length} 項，圖片與售價 ${visibleProductPresentation.length} 項`);
+    if (productCards.length !== productImageFiles.length || productCards.length !== menuPrices.length) {
+      throw new Error(`菜單產品資料數量不一致：卡片 ${productCards.length} 項、圖片 ${productImageFiles.length} 項、售價 ${menuPrices.length} 項`);
     }
 
     productCards.forEach((card, index) => {
-      const { image: imageUrl, title, creator, source, license } = visibleProductPresentation[index];
       const price = `NT$${menuPrices[index]}`;
       const productName = card.querySelector("h3").textContent.trim();
       const image = document.createElement("img");
       image.className = "product-image";
-      image.src = imageUrl;
-      image.alt = `${productName} 示意圖片`;
+      image.src = new URL(`${productImageDirectory}${encodeURIComponent(productImageFiles[index])}`, document.baseURI).href;
+      image.alt = productName;
       image.loading = "lazy";
       image.decoding = "async";
       image.addEventListener("error", () => {
@@ -554,20 +558,6 @@
       priceLine.append(priceLabel, priceValue);
       body.append(priceLine);
       card.append(image, body);
-
-      const credit = document.createElement("li");
-      const sourceLink = document.createElement("a");
-      sourceLink.href = source;
-      sourceLink.target = "_blank";
-      sourceLink.rel = "noreferrer";
-      sourceLink.textContent = title;
-      const licenseLink = document.createElement("a");
-      licenseLink.href = licenseUrls[license];
-      licenseLink.target = "_blank";
-      licenseLink.rel = "noreferrer";
-      licenseLink.textContent = license;
-      credit.append(sourceLink, document.createTextNode(` — ${creator} · `), licenseLink);
-      document.querySelector("#image-credits").append(credit);
     });
 
     const menuButton = document.querySelector(".menu-toggle");
